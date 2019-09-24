@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://baichuan72f.github.io</id>
     <title>爸爸教我立剑煮酒然而我爱上了裤衩拖鞋^</title>
-    <updated>2019-09-24T15:31:03.779Z</updated>
+    <updated>2019-09-24T15:35:06.381Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://baichuan72f.github.io"/>
     <link rel="self" href="https://baichuan72f.github.io/atom.xml"/>
@@ -14,27 +14,4 @@
     <logo>https://baichuan72f.github.io/images/avatar.png</logo>
     <icon>https://baichuan72f.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, 爸爸教我立剑煮酒然而我爱上了裤衩拖鞋^</rights>
-    <entry>
-        <title type="html"><![CDATA[Hello World]]></title>
-        <id>https://baichuan72f.github.io/post/hello-gridea</id>
-        <link href="https://baichuan72f.github.io/post/hello-gridea">
-        </link>
-        <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎来到 <strong>百川的个人世界</strong> ！<br>
-✍️  <strong>百川</strong>  是我的外号。在这里你可以看到我的生活、心情、知识、笔记、创意... ... 希望对你有一些帮助！</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>👏  欢迎来到 <strong>百川的个人世界</strong> ！<br>
-✍️  <strong>百川</strong>  是我的外号。在这里你可以看到我的生活、心情、知识、笔记、创意... ... 希望对你有一些帮助！</p>
-<!-- more -->
-<h2 id="关于我">关于我 👇</h2>
-<p>📝  我将对<em>Unity</em>相关的最新<strong>三维展示</strong>技术进行持久预判，跟踪，并及时提供<strong>展示方案</strong>。</p>
-<p>🌉  我会将自己对于个人战略执行，技术团队建设以及个人的体系思考进行不定期的分享。</p>
-<p>🏷️  如果你对其中一类内容感兴趣，可以通过标签，如：个人战略，团队建设，系统思考...来重点关注，也十分欢迎与我进行沟通！</p>
-<p>💬 如果你有任何想法，欢迎在文章下面登录后进行评论！</p>
-<p>🌱 当然 <strong>百川的个人空间</strong> 还很年轻，有很多不足，但请相信，它会越来越丰富🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情进行思想上的交流吧！</p>
-<p>😘 Enjoy~</p>
-]]></content>
-    </entry>
 </feed>
