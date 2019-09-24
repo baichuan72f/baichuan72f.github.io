@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://baichuan72f.github.io</id>
-    <title>百川的Blog</title>
-    <updated>2019-05-31T10:37:15.216Z</updated>
+    <title>爸爸教我立剑煮酒然而我爱上了裤衩拖鞋^</title>
+    <updated>2019-09-24T15:13:10.496Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://baichuan72f.github.io"/>
     <link rel="self" href="https://baichuan72f.github.io/atom.xml"/>
-    <subtitle>脚踏实地，心怀宇宙</subtitle>
+    <subtitle>依山多秀景，
+远路伴光阴。
+至理存大善，
+长情源自然。
+</subtitle>
     <logo>https://baichuan72f.github.io/images/avatar.png</logo>
     <icon>https://baichuan72f.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2019, 百川的Blog</rights>
+    <rights>All rights reserved 2019, 爸爸教我立剑煮酒然而我爱上了裤衩拖鞋^</rights>
     <entry>
         <title type="html"><![CDATA[Hello World]]></title>
         <id>https://baichuan72f.github.io/post/hello-gridea</id>
