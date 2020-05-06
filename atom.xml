@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://baichuan72f.github.io</id>
     <title>立剑煮酒</title>
-    <updated>2020-05-06T03:20:46.220Z</updated>
+    <updated>2020-05-06T03:32:32.338Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://baichuan72f.github.io"/>
     <link rel="self" href="https://baichuan72f.github.io/atom.xml"/>
@@ -54,7 +54,9 @@ Quixel Bridge允许用户在线预览和下载相关的资产内容。<br>
 <img src="https://baichuan72f.github.io/post-images/1588734246555.png" alt="" loading="lazy"></li>
 <li>点击Open Plugin Folder找到插件并导入Unity<br>
 <img src="https://baichuan72f.github.io/post-images/1588734347542.png" alt="" loading="lazy"></li>
-<li>确认导出选项后，就可以导出资源了。再次提示如果更改了导出或者下载需重启软件<br>
+<li>点开Edit/Settings/MoreSettings并且将API PORT VALUE改为Unity默认的通讯端口13081<br>
+<img src="https://baichuan72f.github.io/post-images/1588735832547.jpg" alt="" loading="lazy"></li>
+<li>确认导出选项后，就可以重启软件然后再次按照步骤导出资源了。第二次导出时，只需要注意步骤5的导出路径即可。<br>
 <img src="https://baichuan72f.github.io/post-images/1588734403204.png" alt="" loading="lazy"></li>
 </ol>
 ]]></content>
