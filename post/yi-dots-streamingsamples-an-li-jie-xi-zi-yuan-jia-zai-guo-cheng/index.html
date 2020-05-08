@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>将Quixel Bridge资源导出到Unity | 立剑煮酒</title>
+<title>以 DOTS-StreamingSamples 案例解析资源加载过程（一） | 立剑煮酒</title>
 <meta name="description" content="依山多秀景，
 远路伴光阴。
 至理存大善，
@@ -100,59 +100,68 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">将Quixel Bridge资源导出到Unity</h2>
-            <div class="post-date">2020-05-06</div>
+            <h2 class="post-title">以 DOTS-StreamingSamples 案例解析资源加载过程（一）</h2>
+            <div class="post-date">2020-05-08</div>
             
-              <div class="feature-container" style="background-image: url('https://baichuan72f.github.io/post-images/jiang-quixel-bridge-zi-yuan-dao-chu-dao-unity.png')">
+              <div class="feature-container" style="background-image: url('https://baichuan72f.github.io/post-images/yi-dots-streamingsamples-an-li-jie-xi-zi-yuan-jia-zai-guo-cheng.jpg')">
               </div>
             
             <div class="post-content">
-              <h1 id="quixel-bridge-用途介绍">Quixel Bridge 用途介绍</h1>
+              <p>DOTS-StreamingSamples是Unity官方的DOTS系列案例之一，目前还处于开发阶段。对于Unity未来的编程模式来说，DOTS一定是趋势。另外由于DOTS良好的多线程能力，所以很适合做资源加载方面的案例。所以这次先以DOTS-StreamingSamples来上手熟悉一下DOTS以及Streaming。</p>
 <!-- more -->
-<p>作为一个Unity程序员，经常会遇到这样的情况：自己有非常好的想法也具备一定的编程能力。但是想要完成这个想法时，单独配备一个模型美术来配合自己有点太奢侈，经常打扰美术同学又不好意思。或者呢，条件不太允许自己去配置模型人员。这个时候往往就需要我们寻求一些现有资源的帮助。<br>
-Quixel Bridge就是这样一款为各类设计师和攻城狮提供现有三维模型材质等的强大资产库。</p>
+<h1 id="项目克隆">项目克隆</h1>
+<p>项目地址是https://github.com/Unity-Technologies/DOTS-StreamingSamples.git<br>
+目前的版本是：<br>
+<img src="https://baichuan72f.github.io/post-images/1588906057335.png" alt="" loading="lazy"><br>
+使用git Clone以后在本地使用Unity打开。项目结构如下：<br>
+<img src="https://baichuan72f.github.io/post-images/1588906126145.png" alt="" loading="lazy"></p>
 <!-- more -->
-<h1 id="quixel-bridge-下载安装网址">Quixel Bridge 下载安装网址</h1>
-<!-- more -->
+<h1 id="主要代码结构">主要代码结构</h1>
+<p>使用编辑器打开，我这里用的是Rider，在Assets/Scripts下面是主要的脚本，不多，只有三个。<br>
+分别是：</p>
 <ol>
-<li>打开网址 https://quixel.com/bridge<br>
-<img src="https://baichuan72f.github.io/post-images/1588732083181.png" alt="" loading="lazy"></li>
-<li>点击 DownLoad For Free</li>
-<li>下载后依次安装</li>
+<li>ProceduralScatter：Component数据和Job逻辑(C)</li>
+<li>ProceduralScatterAuthoring：Entity实体和mono转换逻辑（E）</li>
+<li>TrivialScatterSystem：System系统处理逻辑(S)<br>
+使用时，会将Authoring挂载到GameObject上，作为程序的实体输入。然后System会根据Scatter上的Component和Job处理实体。最终显示出来想要的效果。</li>
 </ol>
 <!-- more -->
-<h1 id="quixel-bridge资源导出到unity">Quixel Bridge资源导出到Unity</h1>
+<h2 id="proceduralscatterauthoring">ProceduralScatterAuthoring</h2>
+<p>为了理解方便，我们先从ProceduralScatterAuthoring开始，以下是具体实现：<br>
+<img src="https://baichuan72f.github.io/post-images/1588908484834.png" alt="" loading="lazy"><br>
+Data是基本数据，用来在面板上指定预制体和初始化所需参数。</p>
 <!-- more -->
-<ol>
-<li>打开软件后是下图这个样子<br>
-<img src="https://baichuan72f.github.io/post-images/1588733578405.png" alt="" loading="lazy"><br>
-Quixel Bridge允许用户在线预览和下载相关的资产内容。<br>
-目前使用UE4账号可以免费下载所有资源！<br>
-<img src="https://baichuan72f.github.io/post-images/1588735234328.png" alt="" loading="lazy"></li>
-<li>下载后的资源在此处找到<br>
-<img src="https://baichuan72f.github.io/post-images/1588733934505.jpg" alt="" loading="lazy"></li>
-<li>点击其中的某一资源即可查看资源详情<br>
-<img src="https://baichuan72f.github.io/post-images/1588734030885.jpg" alt="" loading="lazy"></li>
-<li>可以在下载时选择所需的资源选项（注意更改选项后需重启软件）<br>
-<img src="https://baichuan72f.github.io/post-images/1588734165927.png" alt="" loading="lazy"></li>
-<li>导出设置选择Unity,路径选择Unity中的工程路径<br>
-<img src="https://baichuan72f.github.io/post-images/1588734246555.png" alt="" loading="lazy"></li>
-<li>点击Open Plugin Folder找到插件并导入Unity<br>
-<img src="https://baichuan72f.github.io/post-images/1588734347542.png" alt="" loading="lazy"></li>
-<li>点开Edit/Settings/MoreSettings并且将API PORT VALUE改为Unity默认的通讯端口13081<br>
-<img src="https://baichuan72f.github.io/post-images/1588735832547.jpg" alt="" loading="lazy"></li>
-<li>确认导出选项后，就可以重启软件然后再次按照步骤导出资源了。第二次导出时，只需要注意步骤5的导出路径即可。<br>
-<img src="https://baichuan72f.github.io/post-images/1588734403204.png" alt="" loading="lazy"></li>
-</ol>
+<pre><code>public struct Data
+{  
+    public GameObject Prefab;  //待实例的物体名称
+    public float ScatterRadius;  //物体半径
+    public float3 PlacementOffset;  //物体实例时的偏移
+}  
+</code></pre>
+<!-- more -->
+<p>Convert方法和DeclareReferencedPrefabs将数据推入System中</p>
+<!-- more -->
+<pre><code>public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
+</code></pre>
+<!-- more -->
+<p>entity为实体，<br>
+dstManager为实例管理者，<br>
+conversionSystem为接收实体的System</p>
+<!-- more -->
+<pre><code>public void DeclareReferencedPrefabs(List&lt;GameObject&gt; referencedPrefabs)
+</code></pre>
+<!-- more -->
+<p>referencedPrefabs为待使用的实体引用（可以供System在场景中显示的物体列表）</p>
+<p>今天先讲到这里，后面会将剩下两个类详细进行说明。</p>
 
             </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://baichuan72f.github.io/post/xie-gei-zi-ji-de-cheng-chang-zhi-lu/">
+                <a href="https://baichuan72f.github.io/post/jiang-quixel-bridge-zi-yuan-dao-chu-dao-unity/">
                   <h3 class="post-title">
-                    写给自己的成长之路
+                    将Quixel Bridge资源导出到Unity
                   </h3>
                 </a>
               </div>

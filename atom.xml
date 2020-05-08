@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://baichuan72f.github.io</id>
     <title>立剑煮酒</title>
-    <updated>2020-05-06T03:32:32.338Z</updated>
+    <updated>2020-05-08T06:56:56.983Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://baichuan72f.github.io"/>
     <link rel="self" href="https://baichuan72f.github.io/atom.xml"/>
@@ -14,6 +14,62 @@
     <logo>https://baichuan72f.github.io/images/avatar.png</logo>
     <icon>https://baichuan72f.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 立剑煮酒</rights>
+    <entry>
+        <title type="html"><![CDATA[以 DOTS-StreamingSamples 案例解析资源加载过程（一）]]></title>
+        <id>https://baichuan72f.github.io/post/yi-dots-streamingsamples-an-li-jie-xi-zi-yuan-jia-zai-guo-cheng/</id>
+        <link href="https://baichuan72f.github.io/post/yi-dots-streamingsamples-an-li-jie-xi-zi-yuan-jia-zai-guo-cheng/">
+        </link>
+        <updated>2020-05-08T02:34:52.000Z</updated>
+        <summary type="html"><![CDATA[<p>DOTS-StreamingSamples是Unity官方的DOTS系列案例之一，目前还处于开发阶段。对于Unity未来的编程模式来说，DOTS一定是趋势。另外由于DOTS良好的多线程能力，所以很适合做资源加载方面的案例。所以这次先以DOTS-StreamingSamples来上手熟悉一下DOTS以及Streaming。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>DOTS-StreamingSamples是Unity官方的DOTS系列案例之一，目前还处于开发阶段。对于Unity未来的编程模式来说，DOTS一定是趋势。另外由于DOTS良好的多线程能力，所以很适合做资源加载方面的案例。所以这次先以DOTS-StreamingSamples来上手熟悉一下DOTS以及Streaming。</p>
+<!-- more -->
+<h1 id="项目克隆">项目克隆</h1>
+<p>项目地址是https://github.com/Unity-Technologies/DOTS-StreamingSamples.git<br>
+目前的版本是：<br>
+<img src="https://baichuan72f.github.io/post-images/1588906057335.png" alt="" loading="lazy"><br>
+使用git Clone以后在本地使用Unity打开。项目结构如下：<br>
+<img src="https://baichuan72f.github.io/post-images/1588906126145.png" alt="" loading="lazy"></p>
+<!-- more -->
+<h1 id="主要代码结构">主要代码结构</h1>
+<p>使用编辑器打开，我这里用的是Rider，在Assets/Scripts下面是主要的脚本，不多，只有三个。<br>
+分别是：</p>
+<ol>
+<li>ProceduralScatter：Component数据和Job逻辑(C)</li>
+<li>ProceduralScatterAuthoring：Entity实体和mono转换逻辑（E）</li>
+<li>TrivialScatterSystem：System系统处理逻辑(S)<br>
+使用时，会将Authoring挂载到GameObject上，作为程序的实体输入。然后System会根据Scatter上的Component和Job处理实体。最终显示出来想要的效果。</li>
+</ol>
+<!-- more -->
+<h2 id="proceduralscatterauthoring">ProceduralScatterAuthoring</h2>
+<p>为了理解方便，我们先从ProceduralScatterAuthoring开始，以下是具体实现：<br>
+<img src="https://baichuan72f.github.io/post-images/1588908484834.png" alt="" loading="lazy"><br>
+Data是基本数据，用来在面板上指定预制体和初始化所需参数。</p>
+<!-- more -->
+<pre><code>public struct Data
+{  
+    public GameObject Prefab;  //待实例的物体名称
+    public float ScatterRadius;  //物体半径
+    public float3 PlacementOffset;  //物体实例时的偏移
+}  
+</code></pre>
+<!-- more -->
+<p>Convert方法和DeclareReferencedPrefabs将数据推入System中</p>
+<!-- more -->
+<pre><code>public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
+</code></pre>
+<!-- more -->
+<p>entity为实体，<br>
+dstManager为实例管理者，<br>
+conversionSystem为接收实体的System</p>
+<!-- more -->
+<pre><code>public void DeclareReferencedPrefabs(List&lt;GameObject&gt; referencedPrefabs)
+</code></pre>
+<!-- more -->
+<p>referencedPrefabs为待使用的实体引用（可以供System在场景中显示的物体列表）</p>
+<p>今天先讲到这里，后面会将剩下两个类详细进行说明。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[将Quixel Bridge资源导出到Unity]]></title>
         <id>https://baichuan72f.github.io/post/jiang-quixel-bridge-zi-yuan-dao-chu-dao-unity/</id>
