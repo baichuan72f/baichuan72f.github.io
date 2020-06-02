@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://baichuan72f.github.io</id>
     <title>立剑煮酒</title>
-    <updated>2020-05-08T06:56:56.983Z</updated>
+    <updated>2020-06-02T01:08:30.346Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://baichuan72f.github.io"/>
     <link rel="self" href="https://baichuan72f.github.io/atom.xml"/>
@@ -35,11 +35,12 @@
 <p>使用编辑器打开，我这里用的是Rider，在Assets/Scripts下面是主要的脚本，不多，只有三个。<br>
 分别是：</p>
 <ol>
-<li>ProceduralScatter：Component数据和Job逻辑(C)</li>
-<li>ProceduralScatterAuthoring：Entity实体和mono转换逻辑（E）</li>
-<li>TrivialScatterSystem：System系统处理逻辑(S)<br>
-使用时，会将Authoring挂载到GameObject上，作为程序的实体输入。然后System会根据Scatter上的Component和Job处理实体。最终显示出来想要的效果。</li>
+<li>ProceduralScatter：Tile的内部逻辑</li>
+<li>ProceduralScatterAuthoring：Entity实体和mono转换逻辑</li>
+<li>TrivialScatterSystem：System处理Tile逻辑</li>
 </ol>
+<!-- more -->
+<p>使用时，会将Authoring挂载到GameObject上，作为程序的实体输入。进入系统后TrivialScatterSystem会先处理Tile逻辑，ProceduralScatter则后处理Tile内逻辑。最终显示出来想要的效果。</p>
 <!-- more -->
 <h2 id="proceduralscatterauthoring">ProceduralScatterAuthoring</h2>
 <p>为了理解方便，我们先从ProceduralScatterAuthoring开始，以下是具体实现：<br>
@@ -67,7 +68,14 @@ conversionSystem为接收实体的System</p>
 </code></pre>
 <!-- more -->
 <p>referencedPrefabs为待使用的实体引用（可以供System在场景中显示的物体列表）</p>
-<p>今天先讲到这里，后面会将剩下两个类详细进行说明。</p>
+<h1 id="trivialscattersystem">TrivialScatterSystem</h1>
+<p>TrivialScatterSystem是系统中处理Tile的地方。<br>
+<img src="https://baichuan72f.github.io/post-images/1588992994974.png" alt="" loading="lazy"><br>
+JobComponentSystem的书写风格沿用MonoBehaviour,脚本内逻辑如下：<br>
+1.  OnCreate()  中对各个变量进行初始化<br>
+2. <code>OnUpdate</code>(JobHandle inputDeps)中会在每次循环时进行更新处理<br>
+3. 一般在处理过程中会调用继承Job接口的结构体，执行结构体内的Execute()逻辑<br>
+4. OnUpdate提供一个JobHandle参数并且最终返回一个JobHandle，这个参数可以作为在OnUpdate内部链接多个Job的一个主线。同时也是多个OnUpdate自动串联的依据。</p>
 ]]></content>
     </entry>
     <entry>
